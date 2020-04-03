@@ -29,18 +29,23 @@ public class Main {
 			printCombinations(compositions);
 			ensemble.add(compositions);
 		}
+		
+		
 		int nombreDeCompositions = 1;
 		for(ArrayList<ArrayList<Joueur>> subComps : ensemble) {
 			nombreDeCompositions *= subComps.size();
 		}
 		System.out.println(ensemble);
 		ArrayList<ArrayList<ArrayList<Joueur>>> resultat = trouverToutesLesCompos(ensemble);
+		
+		
 		int iterator = 1;
 		for(ArrayList<ArrayList<Joueur>> compos : resultat) {
 			printFinalComps(compos, iterator++);
 		}
 		System.out.println("nombre de compos attendues : "+ nombreDeCompositions);
-		System.out.println("\n\nFIN");
+		
+		
 	}
 	
 	
@@ -148,28 +153,27 @@ public class Main {
 		ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 		joueurs.add(new Joueur("Lopes", postes.get(nomDePoste.GARDIEN)));
 		joueurs.add(new Joueur("Tatarousanu", postes.get(nomDePoste.GARDIEN)));
-		joueurs.add(new Joueur("Raciopi", postes.get(nomDePoste.GARDIEN)));
+		//joueurs.add(new Joueur("Raciopi", postes.get(nomDePoste.GARDIEN)));
 		joueurs.add(new Joueur("Marcelo", postes.get(nomDePoste.DEFENSEURCENTRAL)));
 		joueurs.add(new Joueur("Denayer", postes.get(nomDePoste.DEFENSEURCENTRAL)));
 		joueurs.add(new Joueur("Yanga-Mbiwa", postes.get(nomDePoste.DEFENSEURCENTRAL)));
-		joueurs.add(new Joueur("Solet", postes.get(nomDePoste.DEFENSEURCENTRAL)));
+		//joueurs.add(new Joueur("Solet", postes.get(nomDePoste.DEFENSEURCENTRAL)));
 		joueurs.add(new Joueur("Andersen", postes.get(nomDePoste.DEFENSEURCENTRAL)));
 		joueurs.add(new Joueur("Dubois", postes.get(nomDePoste.LATERAL)));
-		joueurs.add(new Joueur("Dubois", postes.get(nomDePoste.LATERAL)));
 		joueurs.add(new Joueur("Rafael", postes.get(nomDePoste.LATERAL)));
-		joueurs.add(new Joueur("Tete", postes.get(nomDePoste.LATERAL)));
+		//joueurs.add(new Joueur("Tete", postes.get(nomDePoste.LATERAL)));
 		joueurs.add(new Joueur("Marçal", postes.get(nomDePoste.LATERAL)));
 		joueurs.add(new Joueur("Kone", postes.get(nomDePoste.LATERAL)));
 		joueurs.add(new Joueur("Guimares", postes.get(nomDePoste.MILIEUDETERRAIN)));
 		joueurs.add(new Joueur("Rene-Adelaide", postes.get(nomDePoste.MILIEUDETERRAIN)));
-		joueurs.add(new Joueur("Lucas", postes.get(nomDePoste.MILIEUDETERRAIN)));
+		//joueurs.add(new Joueur("Lucas", postes.get(nomDePoste.MILIEUDETERRAIN)));
 		joueurs.add(new Joueur("Caqueret", postes.get(nomDePoste.MILIEUDETERRAIN)));
 		joueurs.add(new Joueur("Cherki", postes.get(nomDePoste.MILIEUDETERRAIN)));
 		joueurs.add(new Joueur("Aouar", postes.get(nomDePoste.MILIEUDETERRAIN)));
-		joueurs.add(new Joueur("Mendes", postes.get(nomDePoste.MILIEUDETERRAIN)));
+		//joueurs.add(new Joueur("Mendes", postes.get(nomDePoste.MILIEUDETERRAIN)));
 		joueurs.add(new Joueur("Tousart", postes.get(nomDePoste.MILIEUDETERRAIN)));
 		joueurs.add(new Joueur("Terrier", postes.get(nomDePoste.AILLIER)));
-		joueurs.add(new Joueur("Traore", postes.get(nomDePoste.AILLIER)));
+		//joueurs.add(new Joueur("Traore", postes.get(nomDePoste.AILLIER)));
 		joueurs.add(new Joueur("Toko-Ekambi", postes.get(nomDePoste.AILLIER)));
 		joueurs.add(new Joueur("Depay", postes.get(nomDePoste.AILLIER)));
 		joueurs.add(new Joueur("Cornet", postes.get(nomDePoste.AILLIER)));
@@ -194,13 +198,14 @@ public class Main {
 	}
 	
 	public static void printFinalComps(ArrayList<ArrayList<Joueur>> listes, int iterator) {
-		System.out.println("Composition : "+ iterator);
+		System.out.println("Composition "+ iterator + " : \n");
 		for(int i=0; i<listes.size(); i++) {
 			for (int j=0; j<listes.get(i).size(); j++) {
 				System.out.print(listes.get(i).get(j).toString()+"   ");
 			}
+			System.out.println("");
 		}
-		System.out.println("");
+		System.out.println("\n\n");
 	}
 
 }
