@@ -18,27 +18,43 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		// Initialisation des postes
 		HashMap<nomDePoste, Poste> listeDePostes = new HashMap<nomDePoste, Poste>();
 		listeDePostes = initiatePostes();
+		
+		
+		// Initialisation des joueurs
 		ArrayList<Joueur> listeDeJoueurs = new ArrayList<Joueur>();
 		listeDeJoueurs = initiateList(listeDePostes);
+		
+		
+		// Création de la strcture de donnée qui permettra de créer les possibilités de combinaisons de joueurs par poste
 		ArrayList<ArrayList<Joueur>> compositions = new ArrayList<ArrayList<Joueur>>();
+		
+		// Création de la structure de donnée qui permettra de stocker toutes les possibilités de combinaisons de joueurs par poste
 		ArrayList<ArrayList<ArrayList<Joueur>>> ensemble = new ArrayList<ArrayList<ArrayList<Joueur>>>();
+		
+		// Cette partie du programme permet pour chaque poste de génerer la liste des combinaisons possible des joueurs
+		// L'ensemble des combinaisons par poste est également remplie dans cette partie là
 		for(Map.Entry mapentry : listeDePostes.entrySet()) {
 			compositions = getAllPlayerCombinationForAPosition(listeDeJoueurs, (Poste) mapentry.getValue());
 			printCombinations(compositions);
 			ensemble.add(compositions);
 		}
 		
-		
+		// Cette partie du code permet de calculer le nombre compositions attendues par le programme
+		// Cela permet de vérifier qu'il a bien fonctionné
 		int nombreDeCompositions = 1;
 		for(ArrayList<ArrayList<Joueur>> subComps : ensemble) {
 			nombreDeCompositions *= subComps.size();
 		}
-		System.out.println(ensemble);
+		
+		// On cherche à trouver toutes les compositions d'équipe à partir de l'ensemble des 
+		// combinaisons par poste grâce à la fonction "trouverToutesLesCompos"
 		ArrayList<ArrayList<ArrayList<Joueur>>> resultat = trouverToutesLesCompos(ensemble);
 		
-		
+		// On affiche toutes les possibilités calculés précedemment
 		int iterator = 1;
 		for(ArrayList<ArrayList<Joueur>> compos : resultat) {
 			printFinalComps(compos, iterator++);
@@ -76,7 +92,7 @@ public class Main {
 		return compositions;
 	}
 
-	
+
 ////////////////////////////////////// Méthodes pour trouver les possibilités par postes //////////////////
 	
 	private static void helper(ArrayList<int[]> combinations, int data[], int start, int end, int index) {
